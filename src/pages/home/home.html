@@ -1,0 +1,21 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>Map</ion-title>
+  </ion-navbar>
+    
+ 
+</ion-header>
+
+<ion-content  padding>
+  <ion-searchbar [(ngModel)]="autocomplete.input" (ionInput)="updateSearchResults()"  placeholder="Search for a place"></ion-searchbar>
+  <ion-list [hidden]="autocompleteItems.length == 0">
+    <ion-item  *ngFor="let item of autocompleteItems" tappable (click)="selectSearchResult(item)">
+      {{item.description}}
+    </ion-item>
+  </ion-list>
+  <div id="map"></div>
+  <ion-footer>
+    <button  class="geolocation-btn" ion-button full (click)="tryGeolocation()">Try Geolocation</button>
+  </ion-footer>
+</ion-content>
